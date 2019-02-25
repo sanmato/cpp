@@ -11,7 +11,7 @@ struct Word {
         return items[0] == '\0';
     }
 
-    void init(const char* plainString = " ") {
+    void init(const char* plainString = "") {
         strcpy(items, plainString);
     }
 
