@@ -1,22 +1,22 @@
 #include <iostream>
 #include <cstring>
 
-#ifndef collection_h
-#   include "collection.h"
-#endif // collection_h
+#ifndef collections_h
+#   include "collections.h"
+#endif // collections_h
 
-#ifndef set_h
-#   include "set.h"
-#endif // set_h
+#ifndef word_plain_h
+#   include "word_plain.h"
+#endif // word_plain_h
 
-#ifndef associative_container_h
-#   include "associative_container.h"
-#endif //associative_container
+#ifndef reader_plain_h
+#   include "reader_plain.h"
+#endif //reader_plain_h
 
 
 
 using namespace std;
-
+/*
 struct Word {
     enum{MAX_STRING_LENGTH = 254, CONTAINER_CAPACITY = MAX_STRING_LENGTH +1 };
     char items [CONTAINER_CAPACITY];
@@ -102,41 +102,39 @@ Word getWordFromText(void) {
 void process(Word thisWord) {
     cout<<thisWord.c_string()<<endl;
 }
+
+*/
 int main()
 {
-   /* unsigned count = 0;
-    Word word;
-    word.init();
-    word.assign(getWordFromText());
-    while(!word.isNull()) {
-        process(word);
-        count++;
-        word.assign(getWordFromText());
-    }
-    cout<<"words in text: "<<count<<endl; */
-
+   Reader reader;
+   reader.init(
+               "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ", //ALPHABET
+               " ,;:-", //DELIMITERS
+               "." //ENDOFTEXT
+               );
     AssociativeContainer<Word, int> wordFrequencyBinding;
     wordFrequencyBinding.init();
 
     Word word;
     word.init();
-    size_t wordsInText = 0;
+    //OBTIENE LAS PALABRAS DEL TEXTO Y AGREGA LA ASOCIACION <PALABRA, FRECUENCIA>
+    //AL CONTENEDOR ASOCIATIVO "WORDFREQUENCYBINDING"
 
-    while(!word.assign(getWordFromText() ).isNull() ) {
-        wordFrequencyBinding.itemAtPos( word )++;
-        wordsInText++;
-    }
+    while( !word.assign( reader.read() ).isNull() ) wordFrequencyBinding.itemAtPos( word )++;
+    cout << "words in text: " << read.readed() <<endl;
+    //ITERA SOBRE EL CONTENEDOR ASOCIATIVO, MOSTRANDO LOS "BINDINGS"
+    //(ASOCIACIONES) <PALABRA, FRECUENCIA> ENCONTRADAS EN EL TEXTO
 
-    cout<< "words in text: " <<wordsInText<<endl;
+    cout << "words in list: " << wordFrequencyBinding.count()<<endl;
 
-    cout<< "words in list: " <<wordFrequencyBinding.count()<<endl;
     Collection<Word> listOfKeys; listOfKeys.init();
-    listOfKeys.assign(wordFrequencyBinding.keys() )
+    listOfKeys.assign( wordFrequencyBinding.keys() );
     Word* current = listOfKeys.firstItem();
-    while(current) {
-        cout<< "word: " <<current->c_string()
-            << "  occurs: " <<wordFrequencyBinding.itemAtPos( *current )
-            << " times" <<endl;
+    while( current ) {
+        cout << "word: " <<current->c_string()
+             << " length: " <<current->asAnsiString().length()
+             << "  occurs: " <<wordFrequencyBinding.itemAtPos( *current )
+             << " times" <<endl;
         current = listOfKeys.nextItem();
     }
 
