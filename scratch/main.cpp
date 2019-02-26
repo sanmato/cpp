@@ -1,6 +1,20 @@
 #include <iostream>
 #include <cstring>
 
+#ifndef collection_h
+#   include "collection.h"
+#endif // collection_h
+
+#ifndef set_h
+#   include "set.h"
+#endif // set_h
+
+#ifndef associative_container_h
+#   include "associative_container.h"
+#endif //associative_container
+
+
+
 using namespace std;
 
 struct Word {
@@ -90,7 +104,7 @@ void process(Word thisWord) {
 }
 int main()
 {
-    unsigned count = 0;
+   /* unsigned count = 0;
     Word word;
     word.init();
     word.assign(getWordFromText());
@@ -99,6 +113,36 @@ int main()
         count++;
         word.assign(getWordFromText());
     }
-    cout<<"words in text: "<<count<<endl;
+    cout<<"words in text: "<<count<<endl; */
+
+    AssociativeContainer<Word, int> wordFrequencyBinding;
+    wordFrequencyBinding.init();
+
+    Word word;
+    word.init();
+    size_t wordsInText = 0;
+
+    while(!word.assign(getWordFromText() ).isNull() ) {
+        wordFrequencyBinding.itemAtPos( word )++;
+        wordsInText++;
+    }
+
+    cout<< "words in text: " <<wordsInText<<endl;
+
+    cout<< "words in list: " <<wordFrequencyBinding.count()<<endl;
+    Collection<Word> listOfKeys; listOfKeys.init();
+    listOfKeys.assign(wordFrequencyBinding.keys() )
+    Word* current = listOfKeys.firstItem();
+    while(current) {
+        cout<< "word: " <<current->c_string()
+            << "  occurs: " <<wordFrequencyBinding.itemAtPos( *current )
+            << " times" <<endl;
+        current = listOfKeys.nextItem();
+    }
+
+    wordFrequencyBinding.release();
+
+    cout<<endl;
+
     return 0;
 }
