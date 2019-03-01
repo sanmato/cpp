@@ -32,6 +32,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="cpp/associative_container.cpp" />
+		<Unit filename="cpp/word_plain.cpp" />
+		<Unit filename="h/associative_container.h" />
+		<Unit filename="h/word_plain.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
