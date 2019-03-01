@@ -4,6 +4,11 @@ void Word::init( const char* plainString ) {
     rep.init( plainString );
 }
 
+void Word::release( void )
+{
+    rep.release();
+}
+
 bool Word::isNull( void ) const {
     return rep.isNull();
 }

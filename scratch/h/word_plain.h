@@ -11,13 +11,14 @@ struct Word {
     AnsiString rep;
 
     void init( const char* plainString="");
+    void release( void );
 
     bool isNull( void ) const;
     const char* c_string( void );
 
     Word& concat( char ch );
     Word& assign( const Word& word );
-    Word& assign( const ansiString& ansiString );
+    Word& assign( const AnsiString& ansiString );
 
     AnsiString asAnsiString( void ) const;
 

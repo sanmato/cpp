@@ -32,15 +32,27 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="cpp/ansi_string.cpp" />
 		<Unit filename="cpp/associative_container.cpp" />
-		<Unit filename="cpp/reader_plain.cpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="cpp/collection.cpp" />
+		<Unit filename="cpp/collections.cpp" />
+		<Unit filename="cpp/generative_reader.cpp" />
+		<Unit filename="cpp/project_resources.cpp" />
+		<Unit filename="cpp/reader_plain.cpp" />
+		<Unit filename="cpp/set.cpp" />
+		<Unit filename="cpp/text_analizer.cpp" />
+		<Unit filename="cpp/text_rule.cpp" />
 		<Unit filename="cpp/word_plain.cpp" />
+		<Unit filename="h/ansi_string.h" />
 		<Unit filename="h/associative_container.h" />
-		<Unit filename="h/reader_plain.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="h/collection.h" />
+		<Unit filename="h/collections.h" />
+		<Unit filename="h/generative_header.h" />
+		<Unit filename="h/project_resources.h" />
+		<Unit filename="h/reader_plain.h" />
+		<Unit filename="h/set.h" />
+		<Unit filename="h/text_analizer.h" />
+		<Unit filename="h/text_rule.h" />
 		<Unit filename="h/word_plain.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>

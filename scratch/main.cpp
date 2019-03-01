@@ -2,16 +2,20 @@
 #include <cstring>
 
 #ifndef collections_h
-#   include "collections.h"
-#endif // collections_h
+    #include "collections.h"
+#endif // collections
 
-#ifndef word_plain_h
-#   include "word_plain.h"
-#endif // word_plain_h
+#ifndef WORD_PLAIN_H
+    #include "word_plain.h"
+#endif // WORD_PLAIN_H
 
-#ifndef reader_plain_h
-#   include "reader_plain.h"
-#endif //reader_plain_h
+#ifndef GENERATIVE_HEADER_H
+    #include "generative_header.h"
+#endif // GENERATIVE_HEADER_H
+
+#ifndef TEXT_ANALIZER_H
+    #include "text_rule.h"
+#endif // TEXT_ANALIZER_H
 
 
 
@@ -32,7 +36,7 @@ int main()
     //AL CONTENEDOR ASOCIATIVO "WORDFREQUENCYBINDING"
 
     while( !word.assign( reader.read() ).isNull() ) wordFrequencyBinding.itemAtPos( word )++;
-    cout << "words in text: " << read.readed() <<endl;
+    cout << "words in text: " << reader.readed() <<endl;
     //ITERA SOBRE EL CONTENEDOR ASOCIATIVO, MOSTRANDO LOS "BINDINGS"
     //(ASOCIACIONES) <PALABRA, FRECUENCIA> ENCONTRADAS EN EL TEXTO
 

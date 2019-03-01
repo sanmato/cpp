@@ -82,7 +82,7 @@ void AssociativeContainer<KeyType, ValueType>::Iterator::reset( void ) {
     currentKey = nullptr;
     currentValue = nullptr;
     keys.reset();
-    keys.init( associativeContainer->keys() )
+    keys.init( associativeContainer->keys() );
 }
 
 template <class KeyType, class ValueType>
@@ -174,12 +174,12 @@ ValueType& AssociativeContainer<KeyType, ValueType>::itemAtPos( const KeyType& k
 template <class KeyType, class ValueType>
 ValueType AssociativeContainer<KeyType, ValueType>::valueforKey( const KeyType& key)
 {
-    long slot = itsKeys.indexOf( key )
+    long slot = itsKeys.indexOf( key );
     return ( slot != -1 ) ? itsValues.itemAtPos( slot ) : ValueType();
 }
 
 template <class KeyType, class ValueType>
-bool AssociativeContainer<KeyType, ValueType>::contain( const KeyType& item )
+bool AssociativeContainer<KeyType, ValueType>::contain( const KeyType& key )
 {
     return( itsKeys.indexOf( key ) != -1 );
 }

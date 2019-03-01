@@ -3,3 +3,41 @@
 	<iostream>
 	<cstring>
 
+1551467637 source:c:\users\santiago\desktop\c++\scratch\cpp\ansi_string.cpp
+	"ansi_string.h"
+	<iostream>
+	<cstring>
+
+1543595088 source:c:\users\santiago\desktop\c++\scratch\cpp\associative_container.cpp
+	"associative_container.h"
+
+1543723689 source:c:\users\santiago\desktop\c++\scratch\cpp\collection.cpp
+	"collection.h"
+
+1543693449 source:c:\users\santiago\desktop\c++\scratch\cpp\collections.cpp
+	"collections.h"
+
+1543594882 source:c:\users\santiago\desktop\c++\scratch\cpp\generative_reader.cpp
+	"generative_header.h"
+	<stdio.h>
+	"set.h"
+
+1543547286 source:c:\users\santiago\desktop\c++\scratch\cpp\project_resources.cpp
+	"project_resources.h"
+
+1543513916 source:c:\users\santiago\desktop\c++\scratch\cpp\reader_plain.cpp
+	"reader_plain.h"
+	<iostream>
+
+1543780627 source:c:\users\santiago\desktop\c++\scratch\cpp\set.cpp
+	"set.h"
+
+1543600313 source:c:\users\santiago\desktop\c++\scratch\cpp\text_analizer.cpp
+	"text_analizer.h"
+
+1543692044 source:c:\users\santiago\desktop\c++\scratch\cpp\text_rule.cpp
+	"text_rule.h"
+
+1551224782 source:c:\users\santiago\desktop\c++\scratch\cpp\word_plain.cpp
+	"word_plain.h"
+
