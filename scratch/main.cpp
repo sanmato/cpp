@@ -16,94 +16,7 @@
 
 
 using namespace std;
-/*
-struct Word {
-    enum{MAX_STRING_LENGTH = 254, CONTAINER_CAPACITY = MAX_STRING_LENGTH +1 };
-    char items [CONTAINER_CAPACITY];
 
-    bool isNull(void) {
-        return items[0] == '\0';
-    }
-
-    void init(const char* plainString = "") {
-        strcpy(items, plainString);
-    }
-
-    const char* c_string (void) {
-        return &(items[0]);
-    }
-
-    Word& concat( char ch ) {
-        size_t len = strlen(items);
-        items[len] = ch;
-        items[len +1 ] = '\0';
-        return *this;
-    }
-
-    Word& assign( const Word& word ) {
-        strcpy(items, word.items);
-        return *this;
-    }
-
-};
-
-typedef const char* SetOfChar;
-
-SetOfChar alphabet = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
-SetOfChar delimiter = " ,;:";
-SetOfChar endOfText = ".";
-
-bool contain(SetOfChar set, char ch) {
-    size_t cardinal = strlen(set);
-    size_t idx = 0;
-    for ( ; idx < cardinal && set[idx] != ch; idx++);
-    return (idx < cardinal);
-}
-
-Word getWordFromText(void) {
-    enum States {idle, working, ending};
-    static States state = idle;
-    Word word;
-    word.init();
-    bool done = false;
-    while ( !done ) {
-        if(state == idle ) {
-            char ch = cin.get();
-            if(contain(endOfText, ch ) ) {
-                //done = true;
-                //state = idle;
-                state = ending;
-            }else if (contain(alphabet, ch ) ) {
-                word.concat(ch);
-                state = working;
-            }else if (contain(delimiter, ch ) ) {
-                ;
-            }
-        } else if(state == working) {
-            char ch = cin.get();
-            if( contain(endOfText, ch ) ) {
-                done = true;
-                //state = idle;
-                state = ending;
-            }else if( contain(alphabet, ch ) ) {
-                word.concat(ch);
-            }else if( contain(delimiter, ch ) ) {
-                done = true;
-                state = idle;
-            }
-        } else if(state == ending) {
-            done = true;
-            state = idle;
-        }
-    }
-    return word;
-}
-
-void process(Word thisWord) {
-    cout<<thisWord.c_string()<<endl;
-}
-
-*/
 int main()
 {
    Reader reader;
@@ -112,7 +25,8 @@ int main()
                " ,;:-", //DELIMITERS
                "." //ENDOFTEXT
                );
-    AssociativeContainer<Word, int> wordFrequencyBinding;
+    typedef int Frequency;
+    AssociativeContainer<Word, Frequency> wordFrequencyBinding;
     wordFrequencyBinding.init();
 
     Word word;
@@ -127,18 +41,19 @@ int main()
 
     cout << "words in list: " << wordFrequencyBinding.count()<<endl;
 
-    Collection<Word> listOfKeys; listOfKeys.init();
-    listOfKeys.assign( wordFrequencyBinding.keys() );
-    Word* current = listOfKeys.firstItem();
-    while( current ) {
-        cout << "word: " <<current->c_string()
-             << " length: " <<current->asAnsiString().length()
-             << "  occurs: " <<wordFrequencyBinding.itemAtPos( *current )
+    AssociativeContainer<Word, Frequency>::Iterator iterator;
+    iterator.init( &wordFrequencyBinding );
+    for( iterator.begin(); !iterator.isNull(); iterator.next() ) {
+        cout << "word: " <<iterator.key()->c_string()
+             << "\tlength: " <<iterator.key()->asAnsiString().length()
+             << "\toccurs: " <<*( iterator.value() )
              << " times" <<endl;
-        current = listOfKeys.nextItem();
     }
 
+    word.release();
+    iterator.release();
     wordFrequencyBinding.release();
+    reader.release();
 
     cout<<endl;
 
