@@ -19,12 +19,9 @@ using namespace std;
 
 int main()
 {
-   Reader reader;
-   reader.init(
-               "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ", //ALPHABET
-               " ,;:-", //DELIMITERS
-               "." //ENDOFTEXT
-               );
+    Reader<Word>::accepting<char>::from< &cin >::use<Analizer>::with<TextRule> reader;
+    reader.init();
+
     typedef int Frequency;
     AssociativeContainer<Word, Frequency> wordFrequencyBinding;
     wordFrequencyBinding.init();
@@ -44,10 +41,10 @@ int main()
     AssociativeContainer<Word, Frequency>::Iterator iterator;
     iterator.init( &wordFrequencyBinding );
     for( iterator.begin(); !iterator.isNull(); iterator.next() ) {
-        cout << "word: " <<iterator.key()->c_string()
-             << "\tlength: " <<iterator.key()->asAnsiString().length()
-             << "\toccurs: " <<*( iterator.value() )
-             << " times" <<endl;
+        cout << "word: " <<iterator.key()->c_string() << "\t"
+             << "length: " <<iterator.key()->asAnsiString().length() << "\t"
+             << "occurs: " <<*( iterator.value() ) << "\t"
+             << "times" <<endl;
     }
 
     word.release();
